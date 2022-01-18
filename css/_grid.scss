@@ -1,25 +1,44 @@
-body {
-  padding: 0px;
-  margin: 0px;
+// Variáveis do Grid
+$cols: 12;
+$gutter: 20px;
+$l-device: 1200px;
+$m-device: 760px;
+$s-device: 480px;
+
+// Box-sizing
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
-.container {
-  width: 1200px;
-  margin: 0 auto;
-  background-color: blue;
-  &::after,
-  &::before {
-    content: "";
-    display: table;
-    clear: both;
+// Mixin de media-query
+@mixin device($dispositivo) {
+  @if $dispositivo == desktop {
+    @media screen and (min-width: $l-device) {
+      @content;
+    }
+  } @else if $dispositivo == tablet-mobile {
+    @media screen and (max-width: ($l-device - 1)) {
+      @content;
+    }
+  } @else if $dispositivo == tablet {
+    @media screen and (min-width: $m-device) and (max-width: ($l-device - 1)) {
+      @content;
+    }
+  } @else if $dispositivo == mobile {
+    @media screen and (max-width: ($m-device - 1)) {
+      @content;
+    }
   }
 }
 
-.grid-3 {
-  width: calc(25% - 20px);
-  background: rgba(0, 0, 0, 0.5);
-  margin-left: 10px;
-  margin-right: 10px;
-  color: white;
-  float: left;
+p {
+  color: blue;
+  @include device(tablet-mobile) {
+    color: pink;
+  }
+  @include device(mobile) {
+    color: aqua;
+  }
 }

@@ -1,26 +1,23 @@
-body {
-  padding: 0px;
-  margin: 0px;
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-.container {
-  width: 1200px;
-  margin: 0 auto;
-  background-color: blue;
+p {
+  color: blue;
 }
 
-.container::after, .container::before {
-  content: "";
-  display: table;
-  clear: both;
+@media screen and (max-width: 1199px) {
+  p {
+    color: pink;
+  }
 }
 
-.grid-3 {
-  width: calc(25% - 20px);
-  background: rgba(0, 0, 0, 0.5);
-  margin-left: 10px;
-  margin-right: 10px;
-  color: white;
-  float: left;
+@media screen and (max-width: 759px) {
+  p {
+    color: aqua;
+  }
 }
 /*# sourceMappingURL=style.css.map */
